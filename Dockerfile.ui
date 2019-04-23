@@ -4,11 +4,8 @@ WORKDIR /app
 
 COPY ./ui/package*.json ./
 
-RUN npm install
+RUN npm install --verbose
 
 COPY ./ui .
 
-ENV HOST=0.0.0.0
-ENV PORT=5000
-
-EXPOSE 5000
+EXPOSE 3000

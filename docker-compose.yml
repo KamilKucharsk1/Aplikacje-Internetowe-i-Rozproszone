@@ -25,7 +25,9 @@ services:
       mode: replicated
       replicas: 1
   async_worker:
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile.async_executor
     environment:
       - CELERY_BROKER_URI=amqp://celery_broker:5672
       - CELERY_BACKEND_URI=redis://celery_backend:6379
@@ -50,7 +52,7 @@ services:
       - REDIS_DB_URI=redis://redis_database:6379
     command: ["flask", "run", "--host=0.0.0.0"]
     ports:
-      - "5000:5000"
+      - "5001:5000"
     networks:
       - fenix
     deploy:
@@ -61,15 +63,6 @@ services:
       - celery_broker
       - async_worker
       - redis_database
-  ui:
-    build:
-      context: .
-      dockerfile: Dockerfile.ui
-    ports:
-      - "6000:5000"
-    command: "npm start"
-    networks:
-      - fenix
 
 networks:
   fenix:
