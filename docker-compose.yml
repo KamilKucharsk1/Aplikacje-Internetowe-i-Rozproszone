@@ -40,7 +40,9 @@ services:
       - celery_backend
       - celery_broker
   async_executor:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.async_executor
     environment:
       - FLASK_APP=async_executor.main
       - CELERY_BROKER_URI=amqp://celery_broker:5672
@@ -59,6 +61,15 @@ services:
       - celery_broker
       - async_worker
       - redis_database
+  ui:
+    build:
+      context: .
+      dockerfile: Dockerfile.ui
+    ports:
+      - "6000:5000"
+    command: "npm start"
+    networks:
+      - fenix
 
 networks:
   fenix:
