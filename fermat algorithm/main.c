@@ -118,6 +118,7 @@ int main(int argc, char *argv[])
         exit(-1);
     }
 
+    int EXIT_CODE = 1;
     uLong testedNumber, *baseTable = NULL, *subBaseTable = NULL;
     int i; //iterator
 
@@ -135,15 +136,12 @@ int main(int argc, char *argv[])
 
     testedNumber = strtoull(argv[1], NULL, 10);
 
-    if (processNumber == 0)
+    for (i = 0; i < 169; i++)
     {
-        for (i = 0; i < 169; i++)
+        if ((testedNumber != primeNumbers[i]) && (testedNumber % primeNumbers[i] == 0))
         {
-            if ((testedNumber != primeNumbers[i]) && (testedNumber % primeNumbers[i] == 0))
-            {
-                isPrime = false;
-                break;
-            }
+            isPrime = false;
+            break;
         }
     }
 
@@ -151,6 +149,7 @@ int main(int argc, char *argv[])
     {
         if (processNumber == 0)
         {
+
             baseTable = (uLong *)calloc(numberOfProcesses * 10, sizeof(uLong));
             assert(baseTable != NULL);
 
@@ -205,11 +204,11 @@ int main(int argc, char *argv[])
 
         if (isPrime)
         {
-            printf("TAK\n");
+            EXIT_CODE = 0;
         }
         else
         {
-            printf("NIE\n");
+            EXIT_CODE = 1;
         }
 
         free(results);
@@ -219,4 +218,6 @@ int main(int argc, char *argv[])
 
     MPI_Barrier(MPI_COMM_WORLD);
     MPI_Finalize();
+    if (processNumber == 0)
+        exit(EXIT_CODE);
 }
