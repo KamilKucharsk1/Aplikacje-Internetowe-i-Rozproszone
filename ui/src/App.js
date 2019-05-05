@@ -1,10 +1,17 @@
 import React, { Component } from "react";
+import axios from "axios";
 //import ReactDom from "react-dom";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Welcome, Application } from "./views";
 import "./App.css";
 
+
+
 class App extends Component {
+
+
+
+
   render() {
     return (
       <Router>

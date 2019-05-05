@@ -1,8 +1,52 @@
 import React from "react";
 import axios from "axios";
-
+/*
 export default class NumberInput extends React.Component {
-  state = {
+
+
+  constructor() {
+    super();
+    this.state = {
+      customers: []
+    };
+  }
+
+  componentDidMount() {
+    axios.get('http://localhost:5001/tasks')
+      .then(res => res.data)
+      .then(customers => this.setState({customers}, () => console.log('Customers fetched...', customers)));
+  }
+
+  render() {
+    return (
+      <div>
+        <h2>Customers</h2>
+        <ul>
+        {this.state.customers.map(customer => 
+          <li key={customer.id}>{customer.id} {customer.args} {customer.stdout} {customer.stderr}</li>
+        )}
+        </ul>
+      </div>
+    );
+  }
+}
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+ /* state = {
     number: [],
     isPrimary: []
   };
@@ -15,22 +59,25 @@ export default class NumberInput extends React.Component {
     event.preventDefault();
 
     const number = {
-      number: this.state.number
+      number: this.state.number 
     };
-
-    axios.post(`http://localhost:5000/`, { number }).then(res => {
+  }*/
+/*
+    axios.post(`https://dog.ceo/api/breeds/image/random`, { number }).then(res => {
       console.log(res);
       console.log(res.data);
     });
   };
-
-  onSearchSubmit() {
-    axios.get("http://localhost:5000/").then(res => {
-      console.log(res);
-      this.setState({ isPrimary: res });
-    });
-  }
-
+*/
+/*
+   onSearchSubmit() {
+     axios.get("https://dog.ceo/api/breeds/image/random").then(res => {
+       console.log(res.data);
+       this.setState({ isPrimary: res.data.id });
+     });
+   }
+  
+*//*
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -44,3 +91,7 @@ export default class NumberInput extends React.Component {
     );
   }
 }
+*/
+
+
+
