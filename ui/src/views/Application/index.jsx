@@ -29,7 +29,7 @@ class Application extends Component {
     return <Fragment>  
       
       <Container>
-      <Header />
+      {/* <Header /> */}
         <UserBlock gridArea="user" />
         {/* <SearchNumber gridArea="search" /> */}
         {/* <NumberInput gridArea="search" /> */}

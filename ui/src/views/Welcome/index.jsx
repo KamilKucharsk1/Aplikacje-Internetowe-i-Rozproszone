@@ -38,7 +38,7 @@ class Welcome extends Component {
             }}
           >
             <Link
-              to="/Application"
+              to="/Login"
               style={{ textDecoration: "none", margin: 20 }}
             >
               <Button variant="contained" color="primary">
