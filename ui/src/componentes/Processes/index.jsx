@@ -3,6 +3,7 @@ import axios from "axios";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 import ExportToExcel from "../../ExportToExcel";
+import {Container} from "./style"
 
 export default class Processes extends React.Component {
   
@@ -13,7 +14,7 @@ export default class Processes extends React.Component {
     const columns = [
       {
         Header: "Process ID",
-        accessor: "id"
+        accessor: "id" 
       },
       {
         Header: "args",
@@ -76,11 +77,12 @@ export default class Processes extends React.Component {
     ]
 
     return(
+      <Container>
       <ReactTable
       columns={columns}
       data={this.props.processes}
       filterable
-      defaultPageSize={5}
+      defaultPageSize={10}
       noDataText={"Brak wyników do wyświetlenia"}
       
       >
@@ -99,6 +101,7 @@ export default class Processes extends React.Component {
 
 
       </ReactTable>
+      </Container>
     );
   }
 }

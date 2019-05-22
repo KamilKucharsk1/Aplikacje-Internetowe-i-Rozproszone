@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background-color: #e2dcdc;
 
+
+export const Container = styled.div`
+  height: 100vh;
+ 
   display: grid;
   justify-items: center;
   align-items: center;

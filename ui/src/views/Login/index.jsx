@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDom from "react-dom";
 import {withRouter} from "react-router-dom";
+import {MainContainer} from "../style"
 
 import "./_loginSty.scss";
 
@@ -9,7 +10,7 @@ class Login extends React.Component{
     constructor(props){
         super(props);
         this.state = { 
-            isLoginOpen: true, 
+            isLoginOpen: true,  
             isRegisterOpen: false
         };
     }
@@ -26,10 +27,11 @@ class Login extends React.Component{
 
 
 
-    render(){
+    render(){ 
 
 
         return(
+            <MainContainer>
             <div className="root-container">
 
                 <div className="box-controller">
@@ -51,6 +53,7 @@ class Login extends React.Component{
                 {console.log(this.state.value)}
 
             </div>
+            </MainContainer>
 
 
         );
@@ -158,7 +161,7 @@ class RegisterBox extends React.Component{
         this.setState({pwdState: "weak"});
         if(e.target.value.length > 8){
             this.setState({pwdState: "medium"});
-        } else if (e.target.value.length > 12){
+        } if (e.target.value.length > 12){
             this.setState({pwdState: "strong"});
         }
 

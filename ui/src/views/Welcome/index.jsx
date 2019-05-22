@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import { Container, Header } from "./style";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
+import styled from "styled-components";
 
 class Welcome extends Component {
   onSubmit = event => {
@@ -32,9 +33,9 @@ class Welcome extends Component {
           <text>Aby sprawdzić wybraną przez Ciebie liczbę:</text>
           <div
             style={{
-              flexDirection: "row",
-              textAlign: "center",
-              marginTop: "30px"
+              //flexDirection: "row",
+              //textAlign: "center",
+              //marginTop: "30px"
             }}
           >
             <Link
