@@ -19,7 +19,7 @@ class Application extends Component {
     }; 
   }
   
-  componentDidMount() {
+  componentDidMount() { 
     axios.get('http://localhost:5001/tasks') 
       .then(res => res.data)
       .then(processes => this.setState({processes}, () => console.log('Pocesses fetched...', processes)));
@@ -31,6 +31,7 @@ class Application extends Component {
       <Container>
       {/* <Header /> */}
         <UserBlock gridArea="user" />
+        <SearchNumber />
         {/* <SearchNumber gridArea="search" /> */}
         {/* <NumberInput gridArea="search" /> */}
         <Processes processes={this.state.processes} gridArea="processes"/>

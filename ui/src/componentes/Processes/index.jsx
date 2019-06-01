@@ -14,7 +14,8 @@ export default class Processes extends React.Component {
     const columns = [
       {
         Header: "Process ID",
-        accessor: "id" 
+        accessor: "id",
+        width: 400
       },
       {
         Header: "args",
