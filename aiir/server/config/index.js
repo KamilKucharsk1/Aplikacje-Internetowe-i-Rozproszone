@@ -1,34 +1,32 @@
-const express = require("express");
-const path = require("path");
-
+const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
+const PORT = 4000;
+const cors = require('cors');
 
-app.use(express.urlencoded());
 
-app.post("/Application", (req, res) => {
-  const numberToCheck = req.body.numberToCheck;
-  console.log(numberToCheck);
-  res.end();
+app.use(cors());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+
+app.all('*', function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+}); 
+
+app.get('/Application', (req, res) => {
+  const customers = [
+    {id: 1, firstName: 'John', lastName: 'Doe'}
+  ]
+  
+  res.json(customers)
+})
+
+app.listen(PORT, function(){
+  console.log('Server is running on Port:',PORT);
 });
 
-// Serve the static files from the React app
-app.use(express.static(path.join(__dirname, "client/build")));
 
-app.post("/number", (req, res) => {});
-
-// An api endpoint that returns a short list of items
-app.get("/api/getList", (req, res) => {
-  var list = ["item1", "item2", "item3"];
-  res.json(list);
-  console.log("Sent list of items");
-});
-
-// Handles any requests that don't match the ones above
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/client/build/index.html"));
-});
-
-const port = process.env.PORT || 5000;
-app.listen(port);
-
-console.log("App is listening on port " + port);
