@@ -4,13 +4,12 @@ import axios from "axios";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Welcome, Application, Login } from "./views";
 import "./App.css";
-
-
+import Cookies from "js-cookie";
 
 class App extends Component {
-
-
-
+  state = {
+    username: Cookies.get("username")
+  };
 
   render() {
     return (

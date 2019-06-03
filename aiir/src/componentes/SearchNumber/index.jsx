@@ -4,70 +4,49 @@ import axios from "axios";
 
 export default class SearchNumber extends React.Component {
   state = {
-    numberToCheck: []
+    numberToCheck: ""
   };
 
-//   constructor(){
+  handleChange = event => {
+    this.setState({ numberToCheck: event.target.value });
+  };
 
-//   document.getElementById('postData').addEventListener('submit', postData);
+  handleSubmit = event => {
+    event.preventDefault();
 
-//   function postData(event){
-//              event.preventDefault();
- 
-//              let tittle = document.getElementById('tittle').value;
-//              let body = document.getElementById('body').value;
- 
-//              fetch('localhost://5000/tasks', {
-//                  method: 'POST',
-//                  headers : new Headers(),
-//                  body:JSON.stringify({tittle:tittle, body:body})
-//              }).then((res) => res.json())
-//              .then((data) =>  console.log(data))
-//              .catch((err)=>console.log(err))
-//          }
-
-
-//         }
-
-
-// axios.post('/user', {
-//   firstName: 'Fred',
-//   lastName: 'Flintstone'
-// })
-// .then(function (response) {
-//   console.log(response);
-// })
-// .catch(function (error) {
-//   console.log(error);
-// });
-
-
-  //document.get
-
+    axios
+      .post("http://40.89.186.174:5000/task", {
+        args: this.state.numberToCheck
+      })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      });
+  };
 
   render() {
-   
     return (
-      <Container>
-        <form id="postData">
-            <input type="text" name="" id="title"/>  
-            <button type="submit">Send to check</button>
-
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Liczba do sprawdzenia:
+            <input type="text" name="name" onChange={this.handleChange} />
+          </label>
+          <button type="submit">Check</button>
         </form>
-
-
-        {console.log()}
-    </Container>
-  );
-}
+      </div>
+    );
+  }
 }
 
-// <Container style={{ display: "inline-block" }}>
-    //   <form method="POST" action="/Application">
-    //     <input type="text" name="numberToCheck" placeholder="Wprowadź liczbę" />
-    //     <input type="submit" />
-    //     <div className="search" style={{ display: "inline-block" }}>
-    //       <button>szukaj</button>
-    //     </div>
-    //   </form>
-    // </Container>
+// return (
+//   <Container>
+//     <form id="postData">
+//       <input type="text" name="" id="title" />
+//       <button type="submit">Send to check</button>
+
+//     </form>
+
+//     {console.log()}
+//   </Container>
+// );

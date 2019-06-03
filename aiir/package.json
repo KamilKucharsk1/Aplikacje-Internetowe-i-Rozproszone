@@ -4,12 +4,17 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.9.3",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.16.4",
+    "js-cookie": "^2.2.0",
     "mongoose": "^5.5.5",
+    "node-sass": "^4.12.0",
     "react": "^16.8.6",
+    "react-adal": "^0.4.23",
+    "react-cookie": "^4.0.0",
+    "react-cookies": "^0.1.1",
     "react-dom": "^16.8.6",
     "react-html-table-to-excel": "^2.0.0",
     "react-router-dom": "^5.0.0",
@@ -18,7 +23,7 @@
     "styled-components": "^4.2.0"
   },
   "scripts": {
-    "start": "HOST=0.0.0.0 PORT=3000 react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

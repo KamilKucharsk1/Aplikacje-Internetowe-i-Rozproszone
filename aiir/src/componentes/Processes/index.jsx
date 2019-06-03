@@ -3,14 +3,36 @@ import axios from "axios";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 import ExportToExcel from "../../ExportToExcel";
-import {Container} from "./style"
+import { Container } from "./style";
 
 export default class Processes extends React.Component {
-  
-  
-  
-  render(){
+  state = {
+    processes: []
+  };
 
+  submitLogin(e) {
+    e.preventDefault();
+
+    axios
+      .get("http://52.143.158.9:5000/tasks", {
+        headers: {
+          "Access-Control-Allow-Origin": "lttp://localhost:3000/Application",
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Methods":
+            "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token"
+        }
+        // withCredentials: true
+      })
+      .then(res => res.data)
+      .then(processes =>
+        this.setState({ processes }, () =>
+          console.log("Pocesses fetched...", processes)
+        )
+      );
+  }
+
+  render() {
     const columns = [
       {
         Header: "Process ID",
@@ -29,14 +51,14 @@ export default class Processes extends React.Component {
       {
         Header: "return code",
         accessor: "returncode",
-        style:{
+        style: {
           textAlign: "center"
         }
       },
       {
         Header: "state",
         accessor: "state",
-        style:{
+        style: {
           textAlign: "center"
         }
       },
@@ -46,80 +68,68 @@ export default class Processes extends React.Component {
             <i className="fa-tasks" /> Progress
           </span>
         ),
-        accessor: 'progress',
+        accessor: "progress",
         filterable: false,
         Cell: row => (
           <div
             style={{
-              width: '100%',
-              height: '100%',
-              backgroundColor: '#dadada',
-              borderRadius: '2px'
+              width: "100%",
+              height: "100%",
+              backgroundColor: "#dadada",
+              borderRadius: "2px"
             }}
           >
             <div
               style={{
                 width: `${row.value}%`,
-                height: '100%',
+                height: "100%",
                 backgroundColor:
                   row.value > 66
-                    ? '#85cc00'
+                    ? "#85cc00"
                     : row.value > 33
-                    ? '#ffbf00'
-                    : '#ff2e00',
-                borderRadius: '2px',
-                transition: 'all .2s ease-out'
+                    ? "#ffbf00"
+                    : "#ff2e00",
+                borderRadius: "2px",
+                transition: "all .2s ease-out"
               }}
             />
           </div>
         )
       }
-      
-    ]
+    ];
 
-    return(
+    return (
       <Container>
-      <ReactTable
-      columns={columns}
-      data={this.props.processes}
-      filterable
-      defaultPageSize={10}
-      noDataText={"Brak wyników do wyświetlenia"}
-      
-      >
-
-      {(state, filtredData, instance) => {
-
-        this.ReactTable = state.pageRows.map(post => { return post._original});
-         return(
-           <div>
-             {filtredData()}
-             <ExportToExcel post={this.ReactTable} />
-           </div>
-         )
-
-      }}
-
-
-      </ReactTable>
+        <ReactTable
+          columns={columns}
+          data={this.props.processes}
+          filterable
+          defaultPageSize={10}
+          noDataText={"Brak wyników do wyświetlenia"}
+        >
+          {(state, filtredData, instance) => {
+            this.ReactTable = state.pageRows.map(post => {
+              return post._original;
+            });
+            return (
+              <div>
+                {filtredData()}
+                <ExportToExcel post={this.ReactTable} />
+              </div>
+            );
+          }}
+        </ReactTable>
+        <button onClick={this.submitLogin.bind(this)}>Refresh</button>
       </Container>
     );
   }
 }
 
-
-// {this.state.customers.map(customer => 
+// {this.state.customers.map(customer =>
 //   <li key={customer.id}>{customer.id} {customer.args} {customer.stdout} {customer.stderr}</li>
 // )}
 
-
-
-
-
-
-
 // export default class Processes extends React.Component {
-
 
 //   constructor() {
 //     super();
@@ -139,7 +149,7 @@ export default class Processes extends React.Component {
 //       <div>
 //         <h2>Processes</h2>
 //         <ul>
-//         {this.state.processes.map(process => 
+//         {this.state.processes.map(process =>
 //           <li key={process.id}>{process.id} {process.args} {process.stdout} {process.stderr}</li>
 //         )}
 //         </ul>
