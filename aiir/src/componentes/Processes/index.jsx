@@ -14,15 +14,15 @@ export default class Processes extends React.Component {
     e.preventDefault();
 
     axios
-      .get("http://52.143.158.9:5000/tasks", {
+      .get("http://20.188.36.125:5000/tasks", {
         headers: {
-          "Access-Control-Allow-Origin": "lttp://localhost:3000/Application",
-          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Origin": "http://20.188.36.125:5000",
+          "Access-Control-Allow-Credentials": "include",
           "Access-Control-Allow-Methods":
             "GET, POST, PATCH, PUT, DELETE, OPTIONS",
           "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token"
-        }
-        // withCredentials: true
+        },
+        credentials: "include"
       })
       .then(res => res.data)
       .then(processes =>
@@ -36,16 +36,18 @@ export default class Processes extends React.Component {
     const columns = [
       {
         Header: "Process ID",
-        accessor: "id",
-        width: 400
+        accessor: "name",
+        width: 350
       },
       {
         Header: "args",
-        accessor: "args"
+        accessor: "args",
+        width: 200
       },
       {
         Header: "stdout",
-        accessor: "stdout"
+        accessor: "stdout",
+        width: 300
         //sortable: false;
       },
       {

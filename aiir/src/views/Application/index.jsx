@@ -20,14 +20,15 @@ class Application extends Component {
 
   componentDidMount() {
     axios
-      .get("http://52.143.158.9:5000/tasks", {
+      .get("http://20.188.36.125:5000/tasks", {
         headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Origin": "http://20.188.36.125:5000",
+          "Access-Control-Allow-Credentials": "include",
           "Access-Control-Allow-Methods":
             "GET, POST, PATCH, PUT, DELETE, OPTIONS",
           "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token"
-        }
+        },
+        credentials: "include"
       })
       .then(res => res.data)
       .then(processes =>

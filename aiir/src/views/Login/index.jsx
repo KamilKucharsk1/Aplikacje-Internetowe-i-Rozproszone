@@ -61,16 +61,16 @@ class Login extends React.Component {
 }
 
 class LoginBox extends React.Component {
-  state = {
-    username: "John",
-    password: "Doe"
-  };
+  // state = {
+  //   username: "",
+  //   password: ""
+  // };
 
   constructor(props) {
     super(props);
     this.state = {
-      username: "Johnyy",
-      password: "Doee"
+      username: "Jan",
+      password: "Kowalski"
     };
   }
 
@@ -90,20 +90,20 @@ class LoginBox extends React.Component {
 
     axios
       .post(
-        "http://52.143.158.9:5000/login",
+        "http://20.188.36.125:5000/login",
         {
           username: this.state.username,
           password: this.state.password
         },
         {
           headers: {
-            "Access-Control-Allow-Origin": "http://localhost:3000/Login",
-            "Access-Control-Allow-Credentials": "true",
+            "Access-Control-Allow-Origin": "http://20.188.36.125:5000",
+            "Access-Control-Allow-Credentials": "include",
             "Access-Control-Allow-Methods":
               "GET, POST, PATCH, PUT, DELETE, OPTIONS",
             "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token"
-          }
-          // withCredentials: true
+          },
+          credentials: "include"
         }
       )
       .then(res => {
@@ -225,9 +225,11 @@ class RegisterBox extends React.Component {
     e.preventDefault();
 
     axios
-      .post("http://52.143.158.9:5000/register", {
-        username: "Johnyy",
-        password: "Doee"
+      .post("http://20.188.36.125:5000/register", {
+        // username: "Jack",
+        // password: "Doe"
+        username: this.state.username,
+        password: this.state.password
       })
       .then(res => {
         console.log(res);

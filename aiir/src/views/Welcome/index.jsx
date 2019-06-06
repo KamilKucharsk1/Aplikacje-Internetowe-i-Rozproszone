@@ -32,28 +32,27 @@ class Welcome extends Component {
         <div>
           <text>Aby sprawdzić wybraną przez Ciebie liczbę:</text>
           <div
-            style={{
-              //flexDirection: "row",
-              //textAlign: "center",
-              //marginTop: "30px"
-            }}
+            style={
+              {
+                //flexDirection: "row",
+                //textAlign: "center",
+                //marginTop: "30px"
+              }
+            }
           >
-            <Link
-              to="/Login"
-              style={{ textDecoration: "none", margin: 20 }}
-            >
+            <Link to="/Login" style={{ textDecoration: "none", margin: 40 }}>
               <Button variant="contained" color="primary">
-                Zaloguj
+                Zaloguj się do aplikacji
               </Button>
             </Link>
-            <Link
+            {/* <Link
               to="/Application"
               style={{ textDecoration: "none", margin: 20 }}
             >
               <Button variant="contained" color="primary">
                 Zarejestruj
               </Button>
-            </Link>
+            </Link> */}
           </div>
         </div>
       </Container>

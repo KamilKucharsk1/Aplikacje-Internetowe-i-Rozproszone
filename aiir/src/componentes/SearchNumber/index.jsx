@@ -4,8 +4,20 @@ import axios from "axios";
 
 export default class SearchNumber extends React.Component {
   state = {
-    numberToCheck: ""
+    numberToCheck: "",
+    algorithm: "",
+    processes: ""
   };
+
+  constructor() {
+    super();
+    this.state = { isChecked: false };
+    this.handleChecked = this.handleChecked.bind(this);
+  }
+
+  handleChecked() {
+    this.setState({ isChecked: !this.state.isChecked });
+  }
 
   handleChange = event => {
     this.setState({ numberToCheck: event.target.value });
@@ -15,8 +27,10 @@ export default class SearchNumber extends React.Component {
     event.preventDefault();
 
     axios
-      .post("http://40.89.186.174:5000/task", {
-        args: this.state.numberToCheck
+      .post("http://20.188.36.125:5000/task", {
+        args:
+          "mpi run -np 4 --hosts mpi_worker ./algorithms/fermat " +
+          this.state.numberToCheck
       })
       .then(res => {
         console.log(res);
@@ -28,11 +42,42 @@ export default class SearchNumber extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <label>
-            Liczba do sprawdzenia:
+          <label>Select algorithm:</label>
+          <br />
+          <br />
+          <label style={{ paddingTop: 1 }}>
+            Number to check:
             <input type="text" name="name" onChange={this.handleChange} />
           </label>
-          <button type="submit">Check</button>
+          <button type="submit" name="btn_fate">
+            Fate
+          </button>
+          <br />
+
+          {/* <label style={{ paddingTop: 1 }}>
+            Number to check:
+            <input type="text" name="btn_fermat" onChange={this.handleChange} />
+          </label>
+          <button type="submit">Fermat</button>
+          <br />
+
+          <label style={{ paddingTop: 1 }}>
+            Number to check:
+            <input type="text" name="btn_naive" onChange={this.handleChange} />
+          </label>
+          <button type="submit">Naive</button>
+          <br />
+
+          <label style={{ paddingTop: 1 }}>
+            Number to check:
+            <input
+              type="text"
+              name="btn_solovay"
+              onChange={this.handleChange}
+            />
+          </label>
+          <button type="submit">Solovay</button> */}
+          <br />
         </form>
       </div>
     );
