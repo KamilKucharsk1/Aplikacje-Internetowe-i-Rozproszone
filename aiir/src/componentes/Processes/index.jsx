@@ -14,9 +14,9 @@ export default class Processes extends React.Component {
     e.preventDefault();
 
     axios
-      .get("http://20.188.36.125:5000/tasks", {
+      .get("http://40.89.175.173:5000/tasks", {
         headers: {
-          "Access-Control-Allow-Origin": "http://20.188.36.125:5000",
+          "Access-Control-Allow-Origin": "http://40.89.175.173:5000",
           "Access-Control-Allow-Credentials": "include",
           "Access-Control-Allow-Methods":
             "GET, POST, PATCH, PUT, DELETE, OPTIONS",

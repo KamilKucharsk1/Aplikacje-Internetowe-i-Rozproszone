@@ -3,6 +3,8 @@ import ReactDom from "react-dom";
 import { withRouter } from "react-router-dom";
 import { MainContainer } from "../style";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
 // import { Cookie } from "react-cookie;";
 
 import "./_loginSty.scss";
@@ -69,7 +71,7 @@ class LoginBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "Jan",
+      username: "Janek",
       password: "Kowalski"
     };
   }
@@ -90,14 +92,14 @@ class LoginBox extends React.Component {
 
     axios
       .post(
-        "http://20.188.36.125:5000/login",
+        "http://40.89.175.173:5000/login",
         {
           username: this.state.username,
           password: this.state.password
         },
         {
           headers: {
-            "Access-Control-Allow-Origin": "http://20.188.36.125:5000",
+            "Access-Control-Allow-Origin": "http://40.89.175.173:5000",
             "Access-Control-Allow-Credentials": "include",
             "Access-Control-Allow-Methods":
               "GET, POST, PATCH, PUT, DELETE, OPTIONS",
@@ -145,13 +147,15 @@ class LoginBox extends React.Component {
             />
           </div>
 
-          <button
-            type="button"
-            className="login-btn"
-            onClick={this.submitLogin.bind(this)}
-          >
-            Login
-          </button>
+          <Link to="/Application" style={{ textDecoration: "none" }}>
+            <button
+              type="button"
+              className="login-btn"
+              onClick={this.submitLogin.bind(this)}
+            >
+              Login
+            </button>
+          </Link>
         </div>
       </div>
     );
@@ -225,7 +229,7 @@ class RegisterBox extends React.Component {
     e.preventDefault();
 
     axios
-      .post("http://20.188.36.125:5000/register", {
+      .post("http://40.89.175.173:5000/register", {
         // username: "Jack",
         // password: "Doe"
         username: this.state.username,
