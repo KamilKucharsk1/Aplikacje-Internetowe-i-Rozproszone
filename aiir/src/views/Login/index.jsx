@@ -90,14 +90,14 @@ class LoginBox extends React.Component {
 
     axios
       .post(
-        "http://20.188.36.125:5000/login",
+        "http://40.89.175.173:5000/login",
         {
           username: this.state.username,
           password: this.state.password
         },
         {
           headers: {
-            "Access-Control-Allow-Origin": "http://20.188.36.125:5000",
+            "Access-Control-Allow-Origin": "http://40.89.175.173:5000",
             "Access-Control-Allow-Credentials": "include",
             "Access-Control-Allow-Methods":
               "GET, POST, PATCH, PUT, DELETE, OPTIONS",
@@ -225,7 +225,7 @@ class RegisterBox extends React.Component {
     e.preventDefault();
 
     axios
-      .post("http://20.188.36.125:5000/register", {
+      .post("http://40.89.175.173:5000/register", {
         // username: "Jack",
         // password: "Doe"
         username: this.state.username,

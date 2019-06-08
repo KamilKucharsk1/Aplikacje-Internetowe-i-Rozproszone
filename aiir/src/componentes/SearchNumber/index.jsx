@@ -27,10 +27,8 @@ export default class SearchNumber extends React.Component {
     event.preventDefault();
 
     axios
-      .post("http://20.188.36.125:5000/task", {
-        args:
-          "mpi run -np 4 --hosts mpi_worker ./algorithms/fermat " +
-          this.state.numberToCheck
+      .post("http://40.89.175.173:5000/task", {
+        args: this.state.numberToCheck
       })
       .then(res => {
         console.log(res);
@@ -47,10 +45,15 @@ export default class SearchNumber extends React.Component {
           <br />
           <label style={{ paddingTop: 1 }}>
             Number to check:
-            <input type="text" name="name" onChange={this.handleChange} />
+            <input
+              type="text"
+              name="name"
+              style={{ width: 400 }}
+              onChange={this.handleChange}
+            />
           </label>
           <button type="submit" name="btn_fate">
-            Fate
+            SEND
           </button>
           <br />
 
