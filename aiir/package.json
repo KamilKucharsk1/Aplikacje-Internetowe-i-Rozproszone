@@ -12,7 +12,7 @@
     "mongoose": "^5.5.5",
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
-    "react-adal": "^0.4.23",
+    "react-adal": "^0.5.1",
     "react-cookie": "^4.0.0",
     "react-cookies": "^0.1.1",
     "react-dom": "^16.8.6",
