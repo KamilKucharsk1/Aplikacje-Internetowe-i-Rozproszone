@@ -10,7 +10,7 @@
     "express": "^4.16.4",
     "js-cookie": "^2.2.0",
     "mongoose": "^5.5.5",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "react": "^16.8.6",
     "react-adal": "^0.4.23",
     "react-cookie": "^4.0.0",
